@@ -1,0 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using LibraryManager.Models;
+namespace LibraryManager.Data
+{
+    public class BookContext : DbContext
+    {
+        public BookContext(DbContextOptions<BookContext> options) : base(options) { }
+
+        public DbSet<Book> Books { get; set; }
+
+    }
+}
