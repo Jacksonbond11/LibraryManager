@@ -59,12 +59,25 @@ internal class Program
 
                 Console.WriteLine("1. Add New User");
                 Console.WriteLine("2. Delete User");
+                Console.WriteLine("3. View All Users");
+                Console.WriteLine("4. Manage User Fines");
 
                 string selection2 = Console.ReadLine();
 
                 if (selection2 == "1")
                 {
                     userService.AddUser();
+                }
+
+                else if (selection2 == "3")
+                {
+                    userService.GetAllUsers();
+                }
+
+                else if(selection2 == "4")
+                {
+                    
+                    userService.UpdateFineBalance();
                 }
 
             }
@@ -83,13 +96,13 @@ internal class Program
 
     private static void ConfigureServices(IServiceCollection services)
     {
-        services.AddDbContext<BookContext>(options => options.UseSqlite("Data Source=database.sqlite"));
-        services.AddScoped<IBookRepository<Book>, BookRepository>();
-        services.AddScoped<BookService>();
+services.AddDbContext<BookContext>(options => options.UseSqlite("Data Source=database.sqlite"));
+services.AddDbContext<UserContext>(options => options.UseSqlite("Data Source=database.sqlite"));
+services.AddScoped<IBookRepository<Book>, BookRepository>();
+services.AddScoped<BookService>();
+services.AddScoped<IUserRepository<User>, UserRepository>();
+services.AddScoped<UserService>();
 
-        services.AddDbContext<UserContext>(options => options.UseSqlite("Data Source=database.sqlite"));
-        services.AddScoped<IUserRepository<User>, UserRepository>();
-        services.AddScoped<UserService>();
 
 
     }

@@ -14,29 +14,34 @@ namespace LibraryManager.Repositories
 
         public User GetById(int id)
         {
-            return _context.user.Find(id);
+            return _context.users.Find(id);
         }
 
+        public User GetByName(string name)
+        {
+            return _context.users.Find(name);
+        }
         public IEnumerable<User> GetAllUsers()
         {
-            return _context.user.ToList();
+            return _context.users.ToList();
         }
 
         public void AddUser(User user)
         {
-            _context.user.Add(user);
+            _context.users.Add(user);
             _context.SaveChanges();
         }
 
         public void UpdateUser(User user)
         {
-            _context.user.Update(user);
+            _context.users.Update(user);
             _context.SaveChanges();
         }
         public void DeleteUser(User user)
         {
-            _context.user.Remove(user);
+            _context.users.Remove(user);
             _context.SaveChanges();
         }
+
     }
 }

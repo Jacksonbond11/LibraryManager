@@ -7,6 +7,6 @@ namespace LibraryManager.Data
     {
         public UserContext(DbContextOptions<UserContext> option) : base(option) { }
 
-        public DbSet<User> user { get; }
+        public DbSet<User> users { get; set;}
     }
 }
